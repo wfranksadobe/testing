@@ -348,5 +348,53 @@
         "multi": true
       }
     ]
+  },{
+    "id": "interestrate",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "jcr:title",
+        "value": "Interest Rate",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "country",
+        "value": "Australia",
+        "label": "Country",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Australia",
+            "value": "australia"
+          },
+          {
+            "name": "China",
+            "value": "china"
+          },
+          {
+            "name": "Denmark",
+            "value": "denmark"
+          },
+          {
+            "name": "Mexico",
+            "value": "mexico"
+          },
+          {
+            "name": "New Zealand",
+            "value": "new zealand"
+          },
+          {
+            "name": "Switzerland",
+            "value": "switzerland"
+          },
+          {
+            "name": "United Kingdom",
+            "value": "united kingdom"
+          }
+        ]
+      }
+    ]
   }
 ]
