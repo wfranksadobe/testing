@@ -240,8 +240,6 @@
               }
             }
           }
-<<<<<<< Updated upstream
-=======
         },
         {
           "title": "Quote",
@@ -259,7 +257,8 @@
               }
             }
           }
-        },{
+        },
+        {
           "title": "Interest Rate",
           "id": "interestrate",
           "plugins": {
@@ -273,7 +272,6 @@
               }
             }
           }
->>>>>>> Stashed changes
         }
       ]
     }

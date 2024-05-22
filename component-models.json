@@ -348,9 +348,6 @@
         "multi": true
       }
     ]
-<<<<<<< Updated upstream
-  }
-=======
   },{
     "id": "interestrate",
     "fields": [
@@ -417,6 +414,5 @@
          "value": ""
        }
      ]
-  }  
->>>>>>> Stashed changes
+  }
 ]

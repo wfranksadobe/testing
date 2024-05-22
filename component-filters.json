@@ -35,13 +35,9 @@
       "offer",
       "creditcardsummary",
       "featurearticles",
-<<<<<<< Updated upstream
-      "fragment"
-=======
       "fragment",
       "interestrate",
       "quote"
->>>>>>> Stashed changes
     ]
   },
   {
