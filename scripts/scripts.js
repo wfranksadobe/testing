@@ -16,6 +16,27 @@ import {
   toClassName
 } from './aem.js';
 
+import {
+  initMartech,
+  updateUserConsent,
+  martechEager,
+  martechLazy,
+  martechDelayed,
+} from './adobe-martech/index.js';
+
+const martechLoadedPromise = initMartech(
+  // The WebSDK config
+  // Documentation: https://experienceleague.adobe.com/en/docs/experience-platform/web-sdk/commands/configure/overview#configure-js
+  {
+    datastreamId: /* your datastream id here, formally edgeConfigId */,
+    orgId: /* your ims org id here */,
+  },
+  // The library config
+  {
+    launchUrls: [/* your Launch container URLs here */],
+    personalization: !!getMetadata('target'),
+  },
+);
 
 const AUDIENCES = {
   mobile: () => window.innerWidth < 600,
@@ -146,6 +167,10 @@ async function loadEager(doc) {
 
   if (main) {
     decorateMain(main);
+    await Promise.all([
+      martechLoadedPromise.then(martechEager),
+      waitForLCP(LCP_BLOCKS),
+    ]);
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS);
   }
@@ -190,6 +215,9 @@ async function loadLazy(doc) {
     const { loadLazy: runLazy } = await import('../plugins/experimentation/src/index.js');
     await runLazy(document, { audiences: AUDIENCES }, pluginContext);
   }
+
+  await martechLazy();
+
 }
 
 /**
@@ -198,9 +226,13 @@ async function loadLazy(doc) {
  */
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
-  window.setTimeout(() => import('./delayed.js'), 3000);
+  window.setTimeout(() => {
+    martechDelayed();
+    return import('./delayed.js');
+  }, 3000);
   // load anything that can be postponed to the latest here
   import('./sidekick.js').then(({ initSidekick }) => initSidekick());
+  
 }
 
 async function loadPage() {
