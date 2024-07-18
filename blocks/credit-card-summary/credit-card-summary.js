@@ -1,9 +1,9 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { getEnvUrls } from '../../scripts/aem.js';
 
 /* eslint-disable no-underscore-dangle */
 export default async function decorate(block) {
-    const aempublishurl = 'https://publish-p123917-e1220159.adobeaemcloud.com';
-    const aemauthorurl = 'https://author-p123917-e1220159.adobeaemcloud.com';
+    const aempublishurl = getEnvUrls.publish;
+    const aemauthorurl = getEnvUrls.author;
     const persistedquery = '/graphql/execute.json/securbank/CreditCardByPath';
     const creditcardpath = block.querySelector(':scope div:nth-child(1) > div a').innerHTML.trim();
     const variationname = block.querySelector(':scope div:nth-child(2) > div').innerHTML.trim();

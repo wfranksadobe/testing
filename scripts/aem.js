@@ -661,6 +661,13 @@ function decorateBlocks(main) {
   main.querySelectorAll('div.section > div > div').forEach(decorateBlock);
 }
 
+function getEnvUrls(main) {
+  return {
+    author: 'https://author-p138110-e1400617.adobeaemcloud.com',
+    publish: 'https://publish-p138110-e1400617.adobeaemcloud.com/'
+  }
+}
+
 /**
  * Loads a block named 'header' into header
  * @param {Element} header header element
@@ -721,6 +728,7 @@ export {
   decorateTemplateAndTheme,
   fetchPlaceholders,
   getMetadata,
+  getEnvUrls,
   loadBlock,
   loadBlocks,
   loadCSS,
