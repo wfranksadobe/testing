@@ -664,7 +664,7 @@ function decorateBlocks(main) {
 function getEnvUrls(main) {
   return {
     author: 'https://author-p138110-e1400617.adobeaemcloud.com',
-    publish: 'https://publish-p138110-e1400617.adobeaemcloud.com/'
+    publish: 'https://publish-p138110-e1400617.adobeaemcloud.com'
   }
 }
 
