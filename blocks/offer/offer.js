@@ -33,7 +33,7 @@ export default async function decorate(block) {
       <p data-aue-prop="headline" data-aue-type="text" class='banner-content__info--headline'>${cfReq.headline}</p>
       <p data-aue-prop="detail" data-aue-type="richtext" class='banner-content__info--detail'>${cfReq.detail.plaintext}</p>
     </div>
-    <img class="banner-content__img" src=${aempublishurl + cfReq.heroImage._dynamicUrl.slice(0,-1)}/>
+    <img class="banner-content__img" src=${aempublishurl + cfReq.heroImage._dynamicUrl}>
   </div>
 `;
 }
