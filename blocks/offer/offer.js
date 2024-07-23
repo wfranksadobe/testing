@@ -29,15 +29,11 @@ export default async function decorate(block) {
 
   block.innerHTML = `
   <div class='banner-content' data-aue-resource=${itemId} data-aue-type="reference" data-aue-filter="cf">
-      <div data-aue-prop="heroImage" data-aue-type="media" class='banner-detail'>
-          <div class="banner-content__info">
-            <p data-aue-prop="headline" data-aue-type="text" class='pretitle'>${cfReq.headline}</p>
-            <p data-aue-prop="detail" data-aue-type="richtext" class='detail'>${cfReq.detail.plaintext}</p>
-          </div>
-          <img src=${aempublishurl + cfReq.heroImage._dynamicUrl}/>
-      </div>
-      <div class='banner-logo'>
-      </div>
+    <div class="banner-content__info">
+      <p data-aue-prop="headline" data-aue-type="text" class='banner-content__info--headline'>${cfReq.headline}</p>
+      <p data-aue-prop="detail" data-aue-type="richtext" class='banner-content__info--detail'>${cfReq.detail.plaintext}</p>
+    </div>
+    <img class="banner-content__img" src=${aempublishurl + cfReq.heroImage._dynamicUrl.slice(0,-1)}/>
   </div>
 `;
 }
