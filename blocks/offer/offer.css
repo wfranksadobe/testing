@@ -8,6 +8,7 @@
   width: 45%;
   border: green 5px solid;
   padding: 10px;
+  margin: 10px;
 }
 
 .banner-content__info--headline {
@@ -22,5 +23,5 @@
 
 .banner-content__img {
   width: 40%;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
