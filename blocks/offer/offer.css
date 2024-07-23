@@ -23,6 +23,7 @@
 }
 
 .banner-content__img {
-  width: 40%;
+  width: 50%;
   padding-bottom: 30px;
+  object-fit: cover;
 }
