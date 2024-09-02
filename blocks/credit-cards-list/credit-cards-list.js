@@ -7,7 +7,7 @@ export default async function decorate(block) {
   console.log(firsttag);
   console.log(variationname);
 
-  const url = 'https://publish-p55117-e571178.adobeaemcloud.com/graphql/execute.json/securbank/CreditCardList';
+  const url = 'https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/securbank/CreditCardList';
   const options = {};
   const faq = await fetch(url, options);
   const index = await faq.json();
