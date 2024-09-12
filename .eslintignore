@@ -1,2 +1,5 @@
 helix-importer-ui
 /plugins/**
+/scripts/htm.js
+/scripts/preact.js
+/blocks/map/locationMap.js
