@@ -9,13 +9,21 @@ import {
   decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
-  waitForLCP,
-  loadBlocks,
+  waitForFirstImage,
+  loadSection,
+  loadSections,
   loadCSS,
   toCamelCase,
   toClassName,
 } from './aem.js';
 import getAudiences from './utils.js';
+
+// Add you templates below
+// window.hlx.templates.add('/templates/my-template');
+
+// Add you plugins below
+// window.hlx.plugins.add('/plugins/my-plugin.js');
+
 
 /**
  * Gets all the metadata elements that are in the given scope.
@@ -126,6 +134,7 @@ export function decorateMain(main) {
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
+  await window.hlx.plugins.run('loadEager');
   const main = doc.querySelector('main');
 
   if (getMetadata('experiment')
@@ -133,19 +142,27 @@ async function loadEager(doc) {
     || Object.keys(getAllMetadata('audience')).length) {
     // eslint-disable-next-line import/no-relative-packages
     const { loadEager: runEager } = await import('../plugins/experimentation/src/index.js');
-    await runEager(document, { audiences: getAudiences() }, pluginContext);
+    await runEager(document, {
+      prodHost: 'www.securbankdemo.com',
+      isProd: () => window.location.hostname.endsWith('aem.page')
+      || window.location.hostname === ('localhost'),
+      audiences: getAudiences(),
+    }, pluginContext);
   }
 
   if (main) {
     decorateMain(main);
     document.body.classList.add('appear');
-    await waitForLCP(LCP_BLOCKS);
+    await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
+
+  sampleRUM.enhance();
 
   try {
     /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
     if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
       loadFonts();
+      window.hlx.plugins.run('loadLazy');
     }
   } catch (e) {
     // do nothing
@@ -158,7 +175,7 @@ async function loadEager(doc) {
  */
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
-  await loadBlocks(main);
+  await loadSections(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
@@ -171,8 +188,6 @@ async function loadLazy(doc) {
   loadFonts();
 
   sampleRUM('lazy');
-  sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
-  sampleRUM.observe(main.querySelectorAll('picture > img'));
 
   // Add below snippet at the end of the lazy phase
   if ((getMetadata('experiment')
@@ -180,7 +195,12 @@ async function loadLazy(doc) {
     || Object.keys(getAllMetadata('audience')).length)) {
     // eslint-disable-next-line import/no-relative-packages
     const { loadLazy: runLazy } = await import('../plugins/experimentation/src/index.js');
-    await runLazy(document, { audiences: getAudiences() }, pluginContext);
+    await runLazy(document, {
+      prodHost: 'www.securbankdemo.com',
+      isProd: () => window.location.hostname.endsWith('aem.page')
+      || window.location.hostname === ('localhost'),
+      audiences: getAudiences(),
+    }, pluginContext);
   }
 }
 
@@ -189,14 +209,20 @@ async function loadLazy(doc) {
  * without impacting the user experience.
  */
 function loadDelayed() {
-  // eslint-disable-next-line import/no-cycle
-  window.setTimeout(() => import('./delayed.js'), 3000);
+  window.setTimeout(() => {
+    window.hlx.plugins.load('delayed');
+    window.hlx.plugins.run('loadDelayed');
+    // eslint-disable-next-line import/no-cycle
+    return import('./delayed.js');
+  }, 3000);
   // load anything that can be postponed to the latest here
   import('./sidekick.js').then(({ initSidekick }) => initSidekick());
 }
 
 async function loadPage() {
+  await window.hlx.plugins.load('eager');
   await loadEager(document);
+  await window.hlx.plugins.load('lazy');
   await loadLazy(document);
   loadDelayed();
 }

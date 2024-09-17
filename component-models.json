@@ -5,7 +5,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "pageTitle",
+        "name": "pagetitle",
         "value": "",
         "label": "Page Title"
       },
@@ -157,6 +157,18 @@
     ]
   },
   {
+    "id": "cards",
+    "fields": [
+      {
+        "component": "text-input",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "required": true        
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
@@ -212,13 +224,37 @@
         "valueType": "string"
       },
       {
-        "component": "boolean",
-        "name": "showauthbox",
-        "label": "Show Auth Box?",
-        "valueType": "boolean",
-        "description": "Show the authentication box that either displays a log in prompt, or the user's name and account details"
-      }
-      
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "required": true,
+        "maxSize": 3,
+        "options": [
+          {
+            "name": "Theme",
+            "children": [
+              {
+                "name": "Light",
+                "value": "light"
+              },
+              {
+                "name": "Dark",
+                "value": "dark"
+              }
+            ]
+          },
+          {
+            "name": "Features",
+            "children": [
+              {
+                "name": "Show Login Box",
+                "value": "authbox"
+              }
+            ]
+          }
+        ]
+      }      
     ]
   },
   {
@@ -286,25 +322,6 @@
         "name": "offerpath",
         "value": "",
         "label": "Offer Content Fragment path",
-        "valueType": "string"
-      },
-      {
-        "component": "text-input",
-        "name": "variation",
-        "value": "",
-        "label": "Variation",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "creditcardsummary",
-    "fields": [
-      {
-        "component": "aem-content-fragment",
-        "name": "contentfragmentpath",
-        "value": "",
-        "label": "Credit Card Content Fragment path",
         "valueType": "string"
       },
       {
