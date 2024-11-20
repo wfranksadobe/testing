@@ -22,7 +22,7 @@ function sampleRUM(checkpoint, data) {
       const weight = (window.SAMPLE_PAGEVIEWS_AT_RATE === 'high' && 10)
         || (window.SAMPLE_PAGEVIEWS_AT_RATE === 'low' && 1000)
         || (new URLSearchParams(window.location.search).get('rum') === 'on' && 1)
-        || 100;
+        || 1;
       const id = Math.random().toString(36).slice(-4);
       const isSelected = Math.random() * weight < 1;
       // eslint-disable-next-line object-curly-newline, max-len
@@ -112,8 +112,6 @@ function sampleRUM(checkpoint, data) {
     // something went wrong
   }
 }
-
-
 
 /**
  * Sanitizes a string for use as class name.
@@ -431,6 +429,7 @@ function decorateSections(main) {
     // Process section metadata
     const sectionMeta = section.querySelector('div.section-metadata');
     if (sectionMeta) {
+      // eslint-disable-next-line no-use-before-define
       const meta = readBlockConfig(sectionMeta);
       Object.keys(meta).forEach((key) => {
         if (key === 'style') {
@@ -484,8 +483,6 @@ async function fetchPlaceholders(prefix = 'default') {
   }
   return window.placeholders[`${prefix}`];
 }
-
-
 
 /**
  * Builds a block DOM Element from a two dimensional array, string, or object
