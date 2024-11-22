@@ -380,6 +380,18 @@
     ]
   },
   {
+    "id": "adventure",
+    "fields": [
+      {
+        "component": "text-input",
+        "name": "fragmentpath",
+        "value": "",
+        "label": "Fragment Path",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "faq",
     "fields": [
       {
