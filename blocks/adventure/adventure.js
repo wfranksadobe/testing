@@ -20,8 +20,14 @@ import {
  * @returns {HTMLElement} The root element of the fragment
  */
 export async function loadFragment(path) {
+  const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+
+  let variation = params.variation;
+
   if (path && path.startsWith('/')) {
-    const resp = await fetch(`https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/wknd-shared/adventure-by-path;adventurePath=${path}`);
+    const resp = await fetch(`https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/wknd-shared/adventure-by-path;adventurePath=${path};variation=${variation}`);
     if (resp.ok) {
       const main = document.createElement('div');
       const leftEl = document.createElement('div');
