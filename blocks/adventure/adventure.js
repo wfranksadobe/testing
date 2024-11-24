@@ -35,6 +35,7 @@ export async function loadFragment(path) {
       const titleEl = document.createElement('h1');
       const descEl = document.createElement('div');
       const activityEl = document.createElement('div');
+      const locationEl = document.createElement('div');
       const tripLengthEl = document.createElement('div');
       const imgEl = document.createElement('img');
       const respJson = await resp.json();
@@ -46,12 +47,14 @@ export async function loadFragment(path) {
       descEl.innerHTML = adventureJson.description.html;
       descEl.classList.add("description");
       activityEl.innerHTML = `Activity Type: ${adventureJson.activity}`;
-      tripLengthEl.innerHTML = `Trip Length: ${adventureJson.tripLength}`;
+      locationEl.innerHTML = `Location: ${adventureJson.destination}`;
+      tripLengthEl.innerHTML = `Date: ${adventureJson.date}`;
       imgEl.src = `https://publish-p130746-e1298459.adobeaemcloud.com${adventureJson.primaryImage._dynamicUrl}`;
       
       leftEl.append(titleEl);
       leftEl.append(descEl);
       rightEl.append(activityEl);
+      rightEl.append(locationEl);
       rightEl.append(tripLengthEl);
       main.append(imgEl);
       main.append(leftEl);
