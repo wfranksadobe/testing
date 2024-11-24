@@ -24,11 +24,32 @@ export async function loadFragment(path) {
     const resp = await fetch(`https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/wknd-shared/adventure-by-path;adventurePath=${path}`);
     if (resp.ok) {
       const main = document.createElement('div');
+      const leftEl = document.createElement('div');
+      const rightEl = document.createElement('div');
+      const titleEl = document.createElement('h1');
+      const descEl = document.createElement('div');
+      const activityEl = document.createElement('div');
+      const tripLengthEl = document.createElement('div');
+      const imgEl = document.createElement('img');
       const respJson = await resp.json();
       const adventureJson = respJson.data.adventureByPath.item;
 
-      const titleEl = main.createElement('div');
+      leftEl.classList.add("left");
+      rightEl.classList.add("right");
       titleEl.innerHTML = adventureJson.title;
+      descEl.innerHTML = adventureJson.description.html;
+      descEl.classList.add("description");
+      activityEl.innerHTML = `Activity Type: ${adventureJson.activity}`;
+      tripLengthEl.innerHTML = `Trip Length: ${adventureJson.tripLength}`;
+      imgEl.src = `https://publish-p130746-e1298459.adobeaemcloud.com${adventureJson.primaryImage._dynamicUrl}`;
+      
+      leftEl.append(titleEl);
+      leftEl.append(descEl);
+      rightEl.append(activityEl);
+      rightEl.append(tripLengthEl);
+      main.append(imgEl);
+      main.append(leftEl);
+      main.append(rightEl);
 
       // reset base path for media to fragment base
       const resetAttributeBase = (tag, attr) => {
@@ -55,7 +76,7 @@ export default async function decorate(block) {
     const fragmentSection = fragment.querySelector(':scope .section');
     if (fragmentSection) {
       block.closest('.section').classList.add(...fragmentSection.classList);
-      block.closest('.fragment').replaceWith(...fragment.childNodes);
+      block.closest('.adventure').replaceWith(...fragment.childNodes);
     }
   }
 }
