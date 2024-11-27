@@ -24,10 +24,10 @@ export async function loadFragment(path) {
     get: (searchParams, prop) => searchParams.get(prop),
   });
 
-  let variationQuery = params.variation ? `;variation=${params.variation}` : "";
+  let variation = params.variation ?? "main";
 
   if (path && path.startsWith('/')) {
-    const resp = await fetch(`https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/wknd-shared/adventure-by-path;adventurePath=${path}${variationQuery}`);
+    const resp = await fetch(`https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/wknd-shared/adventure-by-path;adventurePath=${path};variation=${variation}`);
     if (resp.ok) {
       const main = document.createElement('div');
       const leftEl = document.createElement('div');
