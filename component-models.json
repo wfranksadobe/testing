@@ -410,7 +410,20 @@
         "valueType": "string"
       }
     ]
-  },{
+  },
+  {
+    "id": "rates",
+    "fields": [
+      {
+        "component": "text-input",
+        "name": "variation",
+        "value": "master",
+        "label": "Variation",
+        "valueType": "string"
+      }
+    ]
+  }
+  ,{
     "id": "interestrate",
     "fields": [
       {
