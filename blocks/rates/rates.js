@@ -20,60 +20,60 @@ import {
  * @returns {HTMLElement} The root element of the fragment
  */
 export async function loadFragment(path) {
-  const params = new Proxy(new URLSearchParams(window.location.search), {
-    get: (searchParams, prop) => searchParams.get(prop),
-  });
+  const main = document.createElement('div');
+  main.innerHTML = "Loading Rates";
 
-  let variation = params.variation ?? "main";
+  const resp = await fetch("https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/securbank/AccountRatesList");
+  if (resp.ok) {
+    const respJson = await resp.json();
+    const accountsJson = respJson.data.accountRatesList.items;
 
-  if (path && path.startsWith('/')) {
-    const resp = await fetch("https://author-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/securbank/AccountRatesList");
-    if (resp.ok) {
-      const main = document.createElement('div');
+    // Clear main div
+    main.innerHTML = "";
 
-      const respJson = await resp.json();
-      const accountsJson = respJson.data.accountRatesList.items;
-  
-      accountsJson.forEach(function (account) {
-        const accountDiv = document.createElement('div');
-        const header = document.createElement('div');
-        const rows = document.createElement('div');
-        const headerRow = document.createElement('div');
+    accountsJson.forEach(function (account) {
+      const accountDiv = document.createElement('div');
+      const header = document.createElement('div');
+      const rows = document.createElement('div');
+      const headerRow = document.createElement('div');
 
-        header.innerHTML = account.accountName;
-        headerRow.innerHTML = '<span>Rate</span><span>Product</span>';
-        accountDiv.append(header);
-        accountDiv.append(rows);
-        accountDiv.append(headerRow);
+      header.classList.add("header");
+      rows.classList.add("rates");
 
-        account.rates.forEach(function(rate) {
-          const rateDiv = document.createElement('div');
-
-          rateDiv.innerHTML = `<span>${rate.rate}</span><span>${rate.accountType}</span>`;
-          accountDiv.append(rate);
-        });
-
-        main.append(accountDiv);
+      header.addEventListener('click', function() {
+        this.parentNode.classList.add("open");
       });
 
-      decorateMain(main);
-      await loadSections(main);
-      
-      return main;
-    }
+      header.innerHTML = account.accountName;
+      headerRow.innerHTML = '<span>Rate</span><span>Product</span>';
+      accountDiv.append(header);
+      accountDiv.append(rows);
+      rows.append(headerRow);
+
+      account.rates.forEach(function(rate) {
+        const rateDiv = document.createElement('div');
+
+        rateDiv.innerHTML = `<span>${rate.rate}</span><span>${rate.accountType}</span>`;
+        rows.append(rateDiv);
+      });
+
+      main.append(accountDiv);
+    });
+
+    decorateMain(main);
+    await loadSections(main);
   }
-  return null;
+
+  return main;
 }
 
 export default async function decorate(block) {
-  const link = block.querySelector('a');
-  const path = link ? link.getAttribute('href') : block.textContent.trim();
-  const fragment = await loadFragment(path);
+  const fragment = await loadFragment();
   if (fragment) {
     const fragmentSection = fragment.querySelector(':scope .section');
     if (fragmentSection) {
       block.closest('.section').classList.add(...fragmentSection.classList);
-      block.closest('.adventure').replaceWith(...fragment.childNodes);
+      block.closest('.rates').replaceWith(...fragment.childNodes);
     }
   }
 }
