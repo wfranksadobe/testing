@@ -4,26 +4,67 @@
   flex-direction: row;
 }
 
-.rates-wrapper > .section {
+.rates-wrapper > .rates.block {
   padding: 0;
 }
 
-.rates-wrapper > .section .header {
-
-}
-
-.rates-wrapper > .section .rates {
-  display: none;
-}
-
-.rates-wrapper > .section.open .rates {
+.rates-wrapper > .rates.block > div {
   display: flex;
 }
 
-.rates-wrapper > .section .rates > div:first-of-type {
+.rates-wrapper > .rates.block > div > div {
+  margin-right: 50px;
+}
+
+.rates-wrapper > .rates.block .header {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00567d;
+  background: #dbe2e5;
+  font-size: 1.25rem;
+}
+
+.rates-wrapper > .rates.block .open .header {
+  color: #ffbe19;
+  background: #00567d;
+}
+
+.rates-wrapper > .rates.block .rates {
+  display: none;
+}
+
+.rates-wrapper > .rates.block .open .rates {
+  display: flex;
+  flex-direction: column;
+}
+
+.rates-wrapper > .rates.block .rates > div:first-of-type {
 
 }
 
-.rates-wrapper > .section .rates > div {
+.rates-wrapper > .rates.block .rates > div:first-of-type span {
+  display: flex;
+  border-top: none;
+}
 
+.rates-wrapper > .rates.block .rates > div {
+  display: flex;
+}
+
+
+.rates-wrapper > .rates.block .rates > div > span {
+  display: block;
+  border-top: 1px solid gray;
+  padding: 20px;
+}
+
+.rates-wrapper > .rates.block .rates > div > span.rate {
+  width: 25%;
+}
+
+.rates-wrapper > .rates.block .rates > div > span.product {
+  width: 75%;
+  border-left: 1px solid gray;
 }
