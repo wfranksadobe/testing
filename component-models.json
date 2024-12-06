@@ -415,7 +415,7 @@
     "id": "rates",
     "fields": [
       {
-        "component": "text-area",
+        "component": "text-input",
         "name": "format",
         "value": "",
         "label": "Format",
