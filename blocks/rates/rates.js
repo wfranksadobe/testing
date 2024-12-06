@@ -2,12 +2,13 @@ export default async function decorate(block) {
   const props = [...block.children];
   const path = props[1]?.textContent.trim();
   const highlightIndex = Number(props[2]?.textContent.trim());
+  const cachebuster = Math.floor(Math.random() * 1000);
 
   const main = document.createElement('div');
   main.innerHTML = "Loading Rates";
 
-  const url = path ? `https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/securbank/AccountRateByPath;path=${path};variation=main`
-                : "https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/securbank/AccountRatesList";
+  const url = path ? `https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/securbank/AccountRateByPath;path=${path};variation=main?ts=${cachebuster}`
+                : `https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/securbank/AccountRatesList?ts=${cachebuster}`;
 
   const resp = await fetch(url);
   if (!resp.ok) {
