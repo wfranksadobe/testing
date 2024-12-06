@@ -420,6 +420,13 @@
         "value": "",
         "label": "Format",
         "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "name": "path",
+        "value": "",
+        "label": "Path",
+        "valueType": "string"
       },{
         "component": "text-input",
         "name": "variation",
