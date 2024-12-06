@@ -429,12 +429,6 @@
         "valueType": "string"
       },{
         "component": "text-input",
-        "name": "highlightedIndex",
-        "value": "",
-        "label": "Highlight",
-        "valueType": "string"
-      },{
-        "component": "text-input",
         "name": "variation",
         "value": "master",
         "label": "Variation",
