@@ -74,6 +74,10 @@
   margin: 10px;
 }
 
+.rates-wrapper.single .rates > div.highlight {
+  background-color: purple;
+}
+
 .rates-wrapper .rates > div > span {
   display: block;
   border-top: 1px solid gray;

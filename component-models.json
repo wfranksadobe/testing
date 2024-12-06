@@ -428,13 +428,12 @@
         "label": "Path",
         "valueType": "string"
       },{
-        "component": "number",
+        "component": "text-input",
         "name": "highlight",
         "value": "",
         "label": "Highlight Index",
         "valueType": "string"
-      }
-      ,{
+      },{
         "component": "text-input",
         "name": "variation",
         "value": "master",
