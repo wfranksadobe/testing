@@ -429,7 +429,7 @@
         "valueType": "string"
       },{
         "component": "text-input",
-        "name": "highlight",
+        "name": "highlightIndex",
         "value": "",
         "label": "Highlight Index",
         "valueType": "string"
