@@ -415,6 +415,12 @@
     "id": "rates",
     "fields": [
       {
+        "component": "text-area",
+        "name": "format",
+        "value": "",
+        "label": "Format",
+        "valueType": "string"
+      },{
         "component": "text-input",
         "name": "variation",
         "value": "master",
