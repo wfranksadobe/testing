@@ -1,16 +1,20 @@
 export default async function decorate(block) {
   const props = [...block.children];
+  const path = props[1]?.textContent.trim();
 
   const main = document.createElement('div');
   main.innerHTML = "Loading Rates";
 
-  const resp = await fetch("https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/securbank/AccountRatesList");
+  const url = path ? `https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/securbank/AccountRateByPath;path=${path};variation=main`
+                : "https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/securbank/AccountRatesList";
+
+  const resp = await fetch(url);
   if (!resp.ok) {
     return;
   }
 
   const respJson = await resp.json();
-  const accountsJson = respJson.data.accountRatesList.items;
+  const accountsJson = path ? [respJson.data.accountRatesByPath.item] : respJson.data.accountRatesList.items;
 
   // Clear main div
   main.innerHTML = "";
@@ -19,30 +23,35 @@ export default async function decorate(block) {
     const accountDiv = document.createElement('div');
     const header = document.createElement('div');
     const rows = document.createElement('div');
-    const headerRow = document.createElement('div');
 
     header.classList.add("header");
     rows.classList.add("rates");
 
-    header.addEventListener('click', function() {
-      this.parentNode.classList.toggle("open");
-    });
+    if(!path) {
+      header.addEventListener('click', function() {
+        this.parentNode.classList.toggle("open");
+      });
+
+      const headerRow = document.createElement('div');
+      headerRow.innerHTML = '<span class="rate">Rate</span><span class="product">Product</span>';
+      rows.append(headerRow);
+    }
 
     header.innerHTML = account.accountName;
-    headerRow.innerHTML = '<span class="rate">Rate</span><span class="product">Product</span>';
     accountDiv.append(header);
     accountDiv.append(rows);
-    rows.append(headerRow);
 
     account.rates.forEach(function(rate) {
       const rateDiv = document.createElement('div');
 
-      rateDiv.innerHTML = `<span class="rate">${rate.rate}</span><span class="product">${rate.accountType}</span>`;
+      rateDiv.innerHTML = `<span class="rate">${rate.rate.toFixed(2)}%</span><span class="product">${rate.accountType}</span>`;
       rows.append(rateDiv);
     });
 
     main.append(accountDiv);
   });
 
-  block.append(main);
+  block.closest('.rates-wrapper').classList.add(path ? "single" : "list");
+  block.closest('.rates').replaceWith(...main.childNodes);
+  //block.append(main);
 }

@@ -5,20 +5,21 @@
   justify-content: center;
 }
 
-.rates-wrapper > .rates.block {
+.rates-wrapper {
   padding: 0;
   margin-top: 50px;
 }
 
-.rates-wrapper > .rates.block > div {
+.rates-wrapper > div {
   display: flex;
+  flex-direction: column;
 }
 
-.rates-wrapper > .rates.block > div > div {
+.rates-wrapper > div > div {
   margin-right: 50px;
 }
 
-.rates-wrapper > .rates.block .header {
+.rates-wrapper .header {
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -28,45 +29,80 @@
   font-size: 1.25rem;
 }
 
-.rates-wrapper > .rates.block .open .header {
+.rates-wrapper .open .header {
   color: #ffbe19;
   background: #00567d;
 }
 
-.rates-wrapper > .rates.block .rates {
+.rates-wrapper .rates {
   display: none;
 }
 
-.rates-wrapper > .rates.block .open .rates {
+.rates-wrapper.single .rates {
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f7fa;
+  margin-top: 30px;
+}
+
+.rates-wrapper .open .rates {
   display: flex;
   flex-direction: column;
 }
 
-.rates-wrapper > .rates.block .rates > div:first-of-type {
+.rates-wrapper .rates > div:first-of-type {
 
 }
 
-.rates-wrapper > .rates.block .rates > div:first-of-type span {
-  display: flex;
+.rates-wrapper .rates > div:first-of-type span {
   border-top: none;
 }
 
-.rates-wrapper > .rates.block .rates > div {
+.rates-wrapper.list .rates > div:first-of-type span {
   display: flex;
 }
 
+.rates-wrapper .rates > div {
+  display: flex;
+}
 
-.rates-wrapper > .rates.block .rates > div > span {
+.rates-wrapper.single .rates > div {
+  flex-direction: row-reverse;
+}
+
+.rates-wrapper.single .rates > div {
+  margin: 10px;
+}
+
+.rates-wrapper .rates > div > span {
   display: block;
   border-top: 1px solid gray;
   padding: 20px;
 }
 
-.rates-wrapper > .rates.block .rates > div > span.rate {
+.rates-wrapper.single .rates > div > span {
+  padding: 40px;
+}
+
+.rates-wrapper .rates > div > span.rate {
   width: 25%;
 }
 
-.rates-wrapper > .rates.block .rates > div > span.product {
+.rates-wrapper.single .rates > div > span.rate {
+  line-height: 1.5625rem;
+  height: 100%;
+  background-color: transparent;
+  overflow-wrap: break-word;
+  text-align: right;
+  font-weight: 600;
+  color: #202223;
+}
+
+.rates-wrapper .rates > div > span.product {
   width: 75%;
   border-left: 1px solid gray;
+}
+
+.rates-wrapper.single .rates > div > span.product {
+  border-left: none;
 }
