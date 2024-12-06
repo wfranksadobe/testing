@@ -429,9 +429,9 @@
         "valueType": "string"
       },{
         "component": "text-input",
-        "name": "highlightIndex",
+        "name": "highlightedIndex",
         "value": "",
-        "label": "Highlight Index",
+        "label": "Highlight",
         "valueType": "string"
       },{
         "component": "text-input",
