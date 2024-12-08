@@ -416,11 +416,22 @@
     "fields": [
       {
         "component": "text-input",
-        "name": "format",
+        "name": "path",
         "value": "",
-        "label": "Format",
+        "label": "Path",
         "valueType": "string"
-      },
+      },{
+        "component": "text-input",
+        "name": "variation",
+        "value": "main",
+        "label": "Variation",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "blog",
+    "fields": [
       {
         "component": "text-input",
         "name": "path",
@@ -430,13 +441,13 @@
       },{
         "component": "text-input",
         "name": "variation",
-        "value": "master",
+        "value": "main",
         "label": "Variation",
         "valueType": "string"
       }
     ]
-  }
-  ,{
+  },
+  {
     "id": "interestrate",
     "fields": [
       {

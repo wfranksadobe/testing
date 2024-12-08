@@ -2,7 +2,8 @@
   {
     "id": "main",
     "components": [
-      "section"
+      "section",
+      "blog"
     ]
   },
   {
@@ -37,7 +38,8 @@
       "fragment",
       "adventure",
       "faq",
-      "rates"
+      "rates",
+      "blog"
     ]
   },
   {
