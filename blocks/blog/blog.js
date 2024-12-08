@@ -30,7 +30,7 @@ export default async function decorate(block) {
   const content = document.createElement('div');
 
   header.classList.add("header");
-  authorName.classList.add("author");
+  author.classList.add("author");
   content.classList.add("content");
 
   header.innerHTML = articleJson.headline;
