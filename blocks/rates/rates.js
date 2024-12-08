@@ -27,7 +27,7 @@ export default async function decorate(block) {
     const rows = document.createElement('div');
 
     header.classList.add("header");
-    rows.classList.add("rates");
+    rows.classList.add("rate-list");
 
     if(!path) {
       header.addEventListener('click', function() {
@@ -56,6 +56,8 @@ export default async function decorate(block) {
 
     main.append(accountDiv);
   });
+
+  main.classList.add("rates-container");
 
   block.closest('.rates-wrapper').classList.add(path ? "single" : "list");
   block.innerHTML = "";

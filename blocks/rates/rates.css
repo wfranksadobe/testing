@@ -15,7 +15,9 @@
   flex-direction: column;
 }
 
-.rates-wrapper > div > div {
+.rates-wrapper > div > .rates-container {
+  display: flex;
+  gap: 20px;
   margin-right: 50px;
 }
 
