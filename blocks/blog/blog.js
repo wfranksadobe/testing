@@ -24,17 +24,21 @@ export default async function decorate(block) {
   main.innerHTML = "";
 
   const header = document.createElement('h1');
-  const author = document.createElement('h2');
+  const author = document.createElement('div');
+  const authorName = document.createElement('h2');
+  const authorLocation = document.createElement('h3');
   const content = document.createElement('div');
 
   header.classList.add("header");
-  author.classList.add("author");
+  authorName.classList.add("author");
   content.classList.add("content");
 
   header.innerHTML = articleJson.headline;
-  author.innerHTML = `By ${articleJson.author.name}`;
+  authorName.innerHTML = `By ${articleJson.author.name}`;
+  authorLocation.innerHTML = `By ${articleJson.author.location}`;
   content.innerHTML = articleJson.main.html;
   
+  author.append(authorName, authorLocation);
   main.append(header, author, content);
 
   block.closest('.blog-wrapper').classList.add(path ? "single" : "list");

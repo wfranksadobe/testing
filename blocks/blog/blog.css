@@ -20,7 +20,10 @@ main .blog h1 {
   font: normal normal normal 48px/52px adobe-clean, sans-serif;
 }
 
-main .blog h2 {
+main .blog .author {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   max-width: 1280px;
   margin-top: 0;
   margin-left: auto;
