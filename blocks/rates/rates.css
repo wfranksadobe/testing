@@ -34,65 +34,65 @@
   background: #00567d;
 }
 
-.rates-wrapper .rates {
+.rates-wrapper .rate-list {
   display: none;
 }
 
-.rates-wrapper.single .rates {
+.rates-wrapper.single .rate-list {
   display: flex;
   flex-direction: column;
   background-color: #f2f7fa;
   margin-top: 30px;
 }
 
-.rates-wrapper .open .rates {
+.rates-wrapper .open .rate-list {
   display: flex;
   flex-direction: column;
 }
 
-.rates-wrapper .rates > div:first-of-type {
+.rates-wrapper .rate-list > div:first-of-type {
 
 }
 
-.rates-wrapper .rates > div:first-of-type span {
+.rates-wrapper .rate-list > div:first-of-type span {
   border-top: none;
 }
 
-.rates-wrapper.list .rates > div:first-of-type span {
+.rates-wrapper.list .rate-list > div:first-of-type span {
   display: flex;
 }
 
-.rates-wrapper .rates > div {
+.rates-wrapper .rate-list > div {
   display: flex;
 }
 
-.rates-wrapper.single .rates > div {
+.rates-wrapper.single .rate-list > div {
   flex-direction: row-reverse;
 }
 
-.rates-wrapper.single .rates > div {
+.rates-wrapper.single .rate-list > div {
   margin: 10px;
 }
 
-.rates-wrapper.single .rates > div.highlight {
+.rates-wrapper.single .rate-list > div.highlight {
   background-color: purple;
 }
 
-.rates-wrapper .rates > div > span {
+.rates-wrapper .rate-list > div > span {
   display: block;
   border-top: 1px solid gray;
   padding: 20px;
 }
 
-.rates-wrapper.single .rates > div > span {
+.rates-wrapper.single .rate-list > div > span {
   padding: 40px;
 }
 
-.rates-wrapper .rates > div > span.rate {
+.rates-wrapper .rate-list > div > span.rate {
   width: 25%;
 }
 
-.rates-wrapper.single .rates > div > span.rate {
+.rates-wrapper.single .rate-list > div > span.rate {
   line-height: 1.5625rem;
   height: 100%;
   background-color: transparent;
@@ -102,11 +102,11 @@
   color: #202223;
 }
 
-.rates-wrapper .rates > div > span.product {
+.rates-wrapper .rate-list > div > span.product {
   width: 75%;
   border-left: 1px solid gray;
 }
 
-.rates-wrapper.single .rates > div > span.product {
+.rates-wrapper.single .rate-list > div > span.product {
   border-left: none;
 }
