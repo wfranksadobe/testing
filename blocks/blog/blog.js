@@ -18,7 +18,7 @@ export default async function decorate(block) {
   }
 
   const respJson = await resp.json();
-  const articleJson = respJson.data.accountRatesByPath.item;
+  const articleJson = respJson.data.articleByPath.item;
 
   // Clear main div
   main.innerHTML = "";
