@@ -10,13 +10,11 @@ main .blog {
   position: relative;
   padding: 32px;
   min-height: 454px;
-  color: var(--background-color);
 }
 
 main .blog h1 {
   max-width: 1280px;
   margin: 106px auto 0;
-  color: white;
   font: normal normal normal 48px/52px adobe-clean, sans-serif;
 }
 
@@ -28,7 +26,6 @@ main .blog .author {
   margin-top: 0;
   margin-left: auto;
   margin-right: auto;
-  color: white;
   text-align: left;
   font: normal normal 900 48px/52px adobe-clean, sans-serif;
 }
