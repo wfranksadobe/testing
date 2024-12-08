@@ -4,7 +4,7 @@ export default async function decorate(block) {
   const cachebuster = Math.floor(Math.random() * 1000);
 
   const main = document.createElement('div');
-  main.innerHTML = "Loading Rates";
+  main.innerHTML = "Loading Blog";
 
   if(!path) {
     return;
@@ -37,7 +37,6 @@ export default async function decorate(block) {
   
   main.append(header, author, content);
 
-  block.closest('.rates-wrapper').classList.add(path ? "single" : "list");
-  block.closest('.rates').replaceWith(...main.childNodes);
-  //block.append(main);
+  block.closest('.blog-wrapper').classList.add(path ? "single" : "list");
+  block.closest('.blog').replaceWith(...main.childNodes);
 }
