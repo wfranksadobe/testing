@@ -22,6 +22,7 @@ export default async function decorate(block) {
   main.innerHTML = "";
 
   accountsJson.forEach(function (account) {
+    /*
     const accountDiv = document.createElement('div');
     const header = document.createElement('div');
     const rows = document.createElement('div');
@@ -43,7 +44,7 @@ export default async function decorate(block) {
     accountDiv.append(header);
     accountDiv.append(rows);
 
-    /*account.rates.forEach(function(rate, index) {
+    account.rates.forEach(function(rate, index) {
       const rateDiv = document.createElement('div');
 
       if(highlightIndex == index) {
@@ -52,9 +53,9 @@ export default async function decorate(block) {
 
       rateDiv.innerHTML = `<span class="rate">${rate.rate.toFixed(2)}%</span><span class="product">${rate.accountType}</span>`;
       rows.append(rateDiv);
-    }); */
+    });
 
-    main.append(accountDiv);
+    main.append(accountDiv);*/
   });
 
   block.closest('.rates-wrapper').classList.add(path ? "single" : "list");
