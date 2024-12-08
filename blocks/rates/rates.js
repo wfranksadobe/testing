@@ -22,7 +22,6 @@ export default async function decorate(block) {
   main.innerHTML = "";
 
   accountsJson.forEach(function (account) {
-    /*
     const accountDiv = document.createElement('div');
     const header = document.createElement('div');
     const rows = document.createElement('div');
@@ -55,7 +54,7 @@ export default async function decorate(block) {
       rows.append(rateDiv);
     });
 
-    main.append(accountDiv);*/
+    main.append(accountDiv);
   });
 
   // block.closest('.rates-wrapper').classList.add(path ? "single" : "list");
