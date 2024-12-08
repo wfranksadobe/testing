@@ -57,6 +57,7 @@ export default async function decorate(block) {
     main.append(accountDiv);
   });
 
-  // block.closest('.rates-wrapper').classList.add(path ? "single" : "list");
-  block.closest('.rates').replaceWith(...main.childNodes);
+  block.closest('.rates-wrapper').classList.add(path ? "single" : "list");
+  block.innerHTML = "";
+  block.append(main);
 }

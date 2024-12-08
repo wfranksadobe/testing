@@ -41,6 +41,6 @@ export default async function decorate(block) {
   author.append(authorName, authorLocation);
   main.append(header, author, content);
 
-  block.closest('.blog-wrapper').classList.add(path ? "single" : "list");
-  // block.closest('.blog').replaceWith(...main.childNodes);
+  block.innerHTML = "";
+  block.append(main);
 }
