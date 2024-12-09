@@ -10,6 +10,10 @@
   margin-top: 50px;
 }
 
+.rates-wrapper.list {
+  margin-top: 80px;
+}
+
 .rates-wrapper.single {
   max-width: 750px;
 }
