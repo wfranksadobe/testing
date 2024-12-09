@@ -415,7 +415,7 @@
     "id": "rates",
     "fields": [
       {
-        "component": "text-input",
+        "component": "aem-content-fragment",
         "name": "path",
         "value": "",
         "label": "Path",
@@ -432,6 +432,24 @@
         "name": "highlight",
         "value": "",
         "label": "Highlighted Index",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "author",
+    "fields": [
+      {
+        "component": "aem-content-fragment",
+        "name": "path",
+        "value": "",
+        "label": "Path",
+        "valueType": "string"
+      },{
+        "component": "text-input",
+        "name": "variation",
+        "value": "main",
+        "label": "Variation",
         "valueType": "string"
       }
     ]
