@@ -53,11 +53,11 @@
 }
 
 .rates-wrapper .rate-list > div:first-of-type {
-
+  border-top: none;
 }
 
 .rates-wrapper .rate-list > div:first-of-type span {
-  border-top: none;
+  
 }
 
 .rates-wrapper.list .rate-list > div:first-of-type span {
@@ -66,11 +66,11 @@
 
 .rates-wrapper .rate-list > div {
   display: flex;
+  border-top: solid 1px gray;
 }
 
 .rates-wrapper.single .rate-list > div {
   flex-direction: row-reverse;
-  border-top: solid 1px gray;
 }
 
 .rates-wrapper.single .rate-list > div {
@@ -84,11 +84,11 @@
 
 .rates-wrapper .rate-list > div > span {
   display: block;
-  margin-top: 20px;
-  padding: 40px;
+  padding: 10px;
 }
 
 .rates-wrapper.single .rate-list > div > span {
+  margin-top: 20px;
   padding: 40px;
 }
 
