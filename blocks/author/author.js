@@ -18,7 +18,7 @@ export default async function decorate(block) {
   }
 
   const respJson = await resp.json();
-  const authorJson = respJson.data.articleByPath.item;
+  const authorJson = respJson.data.authorByPath.item;
 
   // Clear main div
   main.innerHTML = "";
