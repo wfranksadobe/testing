@@ -70,20 +70,22 @@
 
 .rates-wrapper.single .rate-list > div {
   flex-direction: row-reverse;
+  border-top: solid 1px gray;
 }
 
 .rates-wrapper.single .rate-list > div {
   margin: 10px;
 }
 
-.rates-wrapper.single .rate-list > div.highlight {
+.rates-wrapper.single .rate-list > div.highlight span {
   background-color: purple;
+  color: white;
 }
 
 .rates-wrapper .rate-list > div > span {
   display: block;
-  border-top: 1px solid gray;
-  padding: 20px;
+  margin-top: 20px;
+  padding: 40px;
 }
 
 .rates-wrapper.single .rate-list > div > span {
