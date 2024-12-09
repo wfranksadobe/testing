@@ -17,6 +17,19 @@ export default async function decorate(block) {
     return;
   }
 
+  const randomDays = Math.floor(Math.random() * 365);
+
+  // Get today's date
+  const today = new Date();
+
+  // Subtract the random number of days
+  const pastDate = new Date(today);
+  pastDate.setDate(today.getDate() - randomDays);
+
+  // Format the date as "Month Day, Year"
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = pastDate.toLocaleDateString('en-US', options);
+
   const respJson = await resp.json();
   const authorJson = respJson.data.authorByPath.item;
 
@@ -26,7 +39,7 @@ export default async function decorate(block) {
   const name = document.createElement('div');
 
   name.classList.add("author-name");
-  name.innerHTML = authorJson.name;
+  name.innerHTML = `${formattedDate} | ${authorJson.name}`;
   
   main.append(name);
 
