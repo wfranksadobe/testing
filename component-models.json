@@ -426,6 +426,13 @@
         "value": "main",
         "label": "Variation",
         "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "name": "highlight",
+        "value": "",
+        "label": "Highlighted Index",
+        "valueType": "string"
       }
     ]
   },
