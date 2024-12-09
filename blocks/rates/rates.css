@@ -97,13 +97,6 @@
 }
 
 .rates-wrapper.single .rate-list > div > span.rate {
-  line-height: 1.5625rem;
-  height: 100%;
-  background-color: transparent;
-  overflow-wrap: break-word;
-  text-align: right;
-  font-weight: 600;
-  color: #202223;
 }
 
 .rates-wrapper .rate-list > div > span.product {
