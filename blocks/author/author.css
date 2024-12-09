@@ -2,7 +2,7 @@ main .author {
   
 }
 
-main .author .author-name {
+main .author .author-name .name {
   text-transform: capitalize;
   text-decoration: underline;
 }

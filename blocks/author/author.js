@@ -39,7 +39,7 @@ export default async function decorate(block) {
   const name = document.createElement('div');
 
   name.classList.add("author-name");
-  name.innerHTML = `${formattedDate} | ${authorJson.name}`;
+  name.innerHTML = `<span class="date">${formattedDate}<span>  |  <span class="name">${authorJson.name}</span>`;
   
   main.append(name);
 
