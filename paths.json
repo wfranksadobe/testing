@@ -5,6 +5,7 @@
     "/content/securbank/loans/mortgagecalc:/mortgagecalc.json",
     "/graphql:/graphql",
     "/content/securbank.resource/icons/:/icons/",
+    "/content/securbank.form.resource/:/",
     "/content/securbank/configuration:/.helix/config.json"
   ],
   "includes": ["/content/securbank/"]
