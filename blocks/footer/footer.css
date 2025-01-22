@@ -10,6 +10,11 @@ footer .footer {
   margin: auto;
 }
 
+footer .footer .columns img {
+  width: 100%;
+  height: auto;
+}
+
 @media (width >= 900px) {
   footer .footer {
     max-width: 1280px;
