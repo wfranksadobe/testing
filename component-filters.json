@@ -7,20 +7,6 @@
     ]
   },
   {
-    "id": "columns",
-    "components": []
-  },
-  {
-    "id": "column",
-    "components": [
-      "text",
-      "image",
-      "button",
-      "title",
-      "creditcardsummary"
-    ]
-  },
-  {
     "id": "section",
     "components": [
       "text",
@@ -30,8 +16,10 @@
       "hero",
       "cards",
       "columns",
+      "fragment",
+      "faq",
       "feature",
-      "forex",
+      "featurearticles",
       "map",
       "offer",
       "featurearticles",
@@ -40,13 +28,29 @@
       "faq",
       "rates",
       "author",
-      "blog"
+      "blog",
+      "forex"
     ]
   },
   {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "columns",
+    "components": [
+      "column"
+    ]
+  },
+  {
+    "id": "column",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
     ]
   }
 ]
