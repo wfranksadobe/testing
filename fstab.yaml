@@ -1,9 +1,5 @@
 mountpoints:
   /: 
-<<<<<<< HEAD
     url: https://author-p130746-e1298459.adobeaemcloud.com/bin/franklin.delivery/chis-adobe/securbank-aem-ue/main
-=======
-    url: https://author-p137825-e1511252.adobeaemcloud.com/bin/franklin.delivery/markszulc/securbank-aem-ue/main
->>>>>>> f90c03ec2c7ec15945394173b8ba576d988f35d9
     type: markup
     suffix: ".html?wcmmode=disabled"
