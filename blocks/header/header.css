@@ -302,3 +302,26 @@ header nav .nav-auth button {
     background-color: rgb(243 246 242);
   }
 }
+
+header .nav-brand {
+  max-height: 100%;
+  width: auto;
+}
+
+header .nav-brand .default-content-wrapper {
+  max-height: 100%;
+  width: auto;
+}
+
+header .nav-brand .default-content-wrapper picture {
+  max-height: 100%;
+  width: auto;
+  display: block;
+}
+
+header .nav-brand .default-content-wrapper picture img {
+  max-height: 100%;
+  width: auto;
+  display: block;
+  max-width: 100%;
+}

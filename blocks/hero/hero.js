@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import authenticate from '../../scripts/auth.js';
+import { executeCallbacks } from '../../scripts/auth.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import { decorateNavAuth } from '../header/header.js';
 
@@ -7,11 +8,10 @@ function decorateAuthenticatedState(parent, user) {
   const USER_INFO = `<div class="dashboard-mini">
       <span class="dashboard-mini-welcome">Welcome back ${user.firstName}!</span>
       <div class="dashboard-mini-account-balance">
-        <span class="dashboard-mini-account-balance-heading">Account Balance</span>
-        <p class="dashboard-mini-account-balance-value">$1,920.00</p>
+        <p class="dashboard-mini-account-balance-value">The IGM Intranet Hub is your gateway to collaboration, insights, and success</p>
       </div>
       <div class=dashboard-mini-quick-actions>
-        <span><a href="https://securbank-react.vercel.app/" target="_blank">View account information</a></span>
+        <span><a href="https://securbank-react.vercel.app/" target="_blank">View your benefits information</a></span>
       </div>
     </div>
   `;
@@ -19,6 +19,7 @@ function decorateAuthenticatedState(parent, user) {
   miniDashboard.classList.add('user-info');
   miniDashboard.innerHTML = USER_INFO;
   parent.append(miniDashboard);
+  executeCallbacks(user.company);
 }
 
 function decorateUnAuthenticatedState(parent) {
@@ -65,18 +66,18 @@ function decorateUnAuthenticatedState(parent) {
 
     authenticate(username, password).then((user) => {
       // console.log(user);
-      if (user === null) {
+      /* if (user === null) {
         const errorMessage = document.getElementsByClassName('error-message')[0];
         errorMessage.style.display = 'block';
         errorMessage.textContent = 'Authentication failed.';
-      } else {
+      } else { */
         const errorMessage = document.getElementsByClassName('error-message')[0];
         errorMessage.style.display = 'none';
         errorMessage.textContent = '';
         document.getElementById('log-in').remove();
         decorateAuthenticatedState(parent, user);
         decorateNavAuth();
-      }
+      //}
     });
     // handle submit
   });

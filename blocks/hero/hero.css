@@ -32,6 +32,9 @@ main .hero h1 {
   margin: 106px auto 0;
   color: white;
   font: normal normal normal 48px/52px adobe-clean, sans-serif;
+  width: 75%;
+  margin: 0;
+  margin-top: 106px;
 }
 
 main .hero h2 {
@@ -42,6 +45,9 @@ main .hero h2 {
   color: white;
   text-align: left;
   font: normal normal 900 48px/52px adobe-clean, sans-serif;
+  width: 75%;
+  margin-left: 0;
+  margin-top: 60px;
 }
 
 main .hero picture {
@@ -256,7 +262,7 @@ main .hero img {
   margin-top: -3px;
   font-style: normal;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 30px;
 }
 
 .dashboard-mini-account-balance-heading {
@@ -274,15 +280,13 @@ main .hero img {
 }
 
 .dashboard-mini-account-balance-value {
-  width: 140px;
-  white-space: nowrap;
   line-height: 18px;
   margin-top: 15px;
   text-align: left;
   font-family: 'Adobe Clean', sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 48px;
+  font-size: 20px;
   color: rgba(44 44 44 / 100%);
 }
 

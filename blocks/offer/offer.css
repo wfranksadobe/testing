@@ -108,9 +108,21 @@
   .banner-content .banner-logo {
     display: block;
     width: 400px;
-    background-image: url("/icons/logo-desjardins-couleur.png");
+    background-image: url("/icons/igm-logo-eng-rgb.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 191px 53px;
+    background-size: 60%;
+  }
+}
+
+@media (width >= 600px) {
+  .banner-content .ig.banner-logo {
+    background-image: url("/icons/iglogo.png");
+  }
+}
+
+@media (width >= 600px) {
+  .banner-content .mackenzie.banner-logo {
+    background-image: url("/icons/mackenzielogo.png");
   }
 }
