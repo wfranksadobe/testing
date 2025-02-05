@@ -69,3 +69,8 @@ footer .icon {
   width: 128px;
   height: auto;
 }
+
+footer .columns {
+  width: 100%;
+  height: auto;
+}
