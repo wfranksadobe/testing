@@ -313,6 +313,13 @@
             ]
           }
         ]
+      },
+      {
+        "component": "text-input",
+        "name": "dmUrl",
+        "value": "",
+        "label": "Dynamic Media URL",
+        "valueType": "string"
       }
     ]
   },
