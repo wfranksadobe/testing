@@ -27,6 +27,11 @@ main .hero {
   max-width: 1280px;
   max-height: 454px;
   padding: 0;
+
+  @media (width < 1281px) {
+    max-height: unset;
+    display: block;
+  }
 }
 
 main .hero .hero-body {
@@ -45,10 +50,22 @@ main .hero .hero-body {
   width: 100%;
   height: 100%;
   padding: 32px;
+
+  @media (width < 1281px) {
+    position: relative;
+    width: auto;
+    height: auto;
+    color: black;
+  }
 }
 
 main .hero .hero-body > div {
   width: 70%;
+
+  /* Custom */
+  @media (width < 1281px) {
+    width: 100%;
+  }
 }
 
 main .hero h1 {
@@ -62,6 +79,11 @@ main .hero h1 {
 
   /* Custom */
   margin-top: 0;
+
+  @media (width < 1281px) {
+    width: 100%;
+    color: black;
+  }
 }
 
 main .hero h2 {
@@ -88,6 +110,10 @@ main .hero picture {
   position: relative;
   width: fit-content;
   height: fit-content;
+
+  @media (width < 1281px) {
+    display: block;
+  }
 }
 
 main .hero picture::after {

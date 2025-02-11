@@ -29,7 +29,8 @@
       "rates",
       "author",
       "blog",
-      "forex"
+      "forex",
+      "dynamic-media"
     ]
   },
   {
@@ -50,7 +51,8 @@
       "text",
       "image",
       "button",
-      "title"
+      "title",
+      "dynamic-media"
     ]
   }
 ]

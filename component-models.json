@@ -670,5 +670,24 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "dynamic-media",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "name": "dmUrl",
+        "value": "",
+        "label": "Dynamic Media URL",
+        "valueType": "string"
+      }
+    ]
   }
 ]

@@ -306,17 +306,31 @@ header nav .nav-auth button {
 header .nav-brand {
   max-height: 100%;
   width: auto;
+
+  @media (width < 901px) {
+    height: 100vh;
+  }
 }
 
 header .nav-brand .default-content-wrapper {
   max-height: 100%;
   width: auto;
+
+  @media (width < 901px) {
+    height: 100vh;
+  }
 }
 
 header .nav-brand .default-content-wrapper picture {
   max-height: 100%;
   width: auto;
   display: block;
+
+  @media (width < 901px) {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+  }
 }
 
 header .nav-brand .default-content-wrapper picture img {
