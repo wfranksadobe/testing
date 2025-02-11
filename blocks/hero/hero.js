@@ -8,7 +8,7 @@ function decorateAuthenticatedState(parent, user) {
   const USER_INFO = `<div class="dashboard-mini">
       <span class="dashboard-mini-welcome">Welcome back ${user.firstName}!</span>
       <div class="dashboard-mini-account-balance">
-        <p class="dashboard-mini-account-balance-value">The IGM Intranet Hub is your gateway to collaboration, insights, and success</p>
+        <p class="dashboard-mini-account-balance-value">The Intranet Hub is your gateway to collaboration, insights, and success</p>
       </div>
       <div class=dashboard-mini-quick-actions>
         <span><a href="https://securbank-react.vercel.app/" target="_blank">View your benefits information</a></span>
