@@ -8,4 +8,5 @@
 
 .dynamic-media > div {
     grid-area: teaser;
+    width: 100%;
 }
