@@ -150,6 +150,9 @@ header .nav-brand {
   font-weight: 700;
   line-height: 1;
   text-align: center;
+
+  /* Custom */
+  flex-basis: 200px;
 }
 
 header nav .nav-brand img {
@@ -316,8 +319,10 @@ header .nav-brand .default-content-wrapper {
   max-height: 100%;
   width: auto;
 
+  /* Custom */
   @media (width < 901px) {
     height: 100vh;
+    padding: 30px;
   }
 }
 

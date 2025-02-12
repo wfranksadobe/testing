@@ -93,9 +93,40 @@ export default async function decorate(block) {
   if (bgP) bgP.remove();
   row = block.firstElementChild;
   row.classList.add('hero-body');
+
+  const links = block.querySelectorAll('a');
+  const dmurlEl = Array.from(links).find(link => link.href.includes("smartimaging.scene7.com"));
+  let dmUrl;
+  if(dmurlEl) {
+    dmUrl = dmurlEl.innerHTML;
+    dmurlEl.remove();
+  }
+
   const content = document.getElementsByClassName('hero-body')[0].children[0].children[0].children[0];
   moveInstrumentation(row, content);
   if (block.classList.contains('authbox')) {
     window.localStorage.getItem('auth') === null ? decorateUnAuthenticatedState(row) : decorateAuthenticatedState(row, JSON.parse(window.localStorage.getItem('auth')));
   }
+
+  // Get image
+  let imageEl = bg.getElementsByTagName("img")[0];
+  if(!imageEl) {
+    console.error("Image element not found, ensure it is defined in the dialog");
+    return;
+  }
+
+  let imageSrc = imageEl.getAttribute("src");
+  if(!imageSrc) {
+    console.error("Image element source not found, ensure it is defined in the dialog");
+    return;
+  }
+
+  // Get imageName from imageSrc expected in the format /content/dam/<...>/<imageName>.<extension>
+  let imageName = imageSrc.split("/").pop().split(".")[0];
+
+  imageEl.setAttribute("data-src", dmUrl + (dmUrl.endsWith('/') ? "" : "/") + imageName);
+  imageEl.setAttribute("src", "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+  imageEl.setAttribute("data-mode", "smartcrop");
+
+  s7responsiveImage(imageEl);
 }
