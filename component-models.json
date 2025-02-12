@@ -262,7 +262,7 @@
     "id": "hero",
     "fields": [
       {
-        "component": "custom-asset-namespace:custom-asset",
+        "component": "aem-content",
         "valueType": "string",
         "name": "image",
         "label": "Image",
