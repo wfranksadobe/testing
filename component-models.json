@@ -262,7 +262,7 @@
     "id": "hero",
     "fields": [
       {
-        "component": "reference",
+        "component": "custom-asset-namespace:custom-asset",
         "valueType": "string",
         "name": "image",
         "label": "Image",
