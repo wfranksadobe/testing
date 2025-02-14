@@ -149,13 +149,10 @@ export default async function decorate(block) {
   });
 
   block.textContent = '';
-  // block.append(slidesWrapper);
-
-  /* container.append(slidesWrapper);
+  container.append(slidesWrapper);
   block.prepend(container);
-  
 
   if (!isSingleSlide) {
     bindEvents(block);
-  } */
+  }
 }
