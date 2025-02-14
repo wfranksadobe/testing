@@ -147,5 +147,12 @@ export default async function decorate(block) {
     a.className = 'button secondary';
     decorateButtons(a);
   });
+
+  container.append(slidesWrapper);
+  block.prepend(container);
   block.textContent = '';
+
+  if (!isSingleSlide) {
+    bindEvents(block);
+  }
 }
