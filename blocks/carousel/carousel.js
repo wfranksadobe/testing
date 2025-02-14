@@ -106,7 +106,7 @@ export default async function decorate(block) {
   container.classList.add('carousel-slides-container');
 
   const slidesWrapper = document.createElement('ul');
-  // slidesWrapper.classList.add('carousel-slides');
+  slidesWrapper.classList.add('carousel-slides');
    // block.prepend(slidesWrapper);
 
   /* let slideIndicators;
