@@ -95,7 +95,7 @@ export default async function decorate(block) {
   carouselId += 1;
   block.setAttribute('id', `carousel-${carouselId}`);
 
-  const rows = block.children;
+  const rows = [...block.children];
   const isSingleSlide = rows.length < 2;
   const placeholders = await fetchPlaceholders();
 
