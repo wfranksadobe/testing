@@ -148,11 +148,13 @@ export default async function decorate(block) {
     decorateButtons(a);
   });
 
-  container.append(slidesWrapper);
-  block.prepend(container);
   block.textContent = '';
+
+  /* container.append(slidesWrapper);
+  block.prepend(container);
+  
 
   if (!isSingleSlide) {
     bindEvents(block);
-  }
+  } */
 }
