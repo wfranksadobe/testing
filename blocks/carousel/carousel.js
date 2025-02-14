@@ -149,7 +149,7 @@ export default async function decorate(block) {
   });
 
   block.textContent = '';
-  block.append(container);
+  block.append(slidesWrapper);
 
   /* container.append(slidesWrapper);
   block.prepend(container);
