@@ -109,6 +109,25 @@ export default async function decorate(block) {
   slidesWrapper.classList.add('carousel-slides');
   block.prepend(slidesWrapper);
 
+  let slideIndicators;
+  if (!isSingleSlide) {
+    const slideIndicatorsNav = document.createElement('nav');
+    slideIndicatorsNav.setAttribute('aria-label', placeholders.carouselSlideControls || 'Carousel Slide Controls');
+    slideIndicators = document.createElement('ol');
+    slideIndicators.classList.add('carousel-slide-indicators');
+    slideIndicatorsNav.append(slideIndicators);
+    block.append(slideIndicatorsNav);
+
+    const slideNavButtons = document.createElement('div');
+    slideNavButtons.classList.add('carousel-navigation-buttons');
+    slideNavButtons.innerHTML = `
+      <button type="button" class= "slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
+      <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
+    `;
+
+    container.append(slideNavButtons);
+  }
+
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     moveInstrumentation(row, li);
@@ -129,5 +148,4 @@ export default async function decorate(block) {
     decorateButtons(a);
   });
   block.textContent = '';
-  // block.append(slidesWrapper);
 }
