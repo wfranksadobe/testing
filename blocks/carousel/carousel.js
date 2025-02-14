@@ -90,7 +90,11 @@ function createSlide(row, slideIndex, carouselId) {
   return slide;
 } 
 
+let carouselId = 0;
 export default function decorate(block) {
+  carouselId += 1;
+  block.setAttribute('id', `carousel-${carouselId}`);
+
   /* change to ul, li */
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
