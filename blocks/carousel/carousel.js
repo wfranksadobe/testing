@@ -107,7 +107,7 @@ export default async function decorate(block) {
 
   const slidesWrapper = document.createElement('ul');
   slidesWrapper.classList.add('carousel-slides');
-  block.prepend(slidesWrapper);
+   // block.prepend(slidesWrapper);
 
   /* let slideIndicators;
   if (!isSingleSlide) {
@@ -149,6 +149,7 @@ export default async function decorate(block) {
   });
 
   block.textContent = '';
+  block.append(container);
 
   /* container.append(slidesWrapper);
   block.prepend(container);
