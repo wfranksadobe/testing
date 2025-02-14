@@ -1,4 +1,4 @@
-import { createOptimizedPicture, decorateButtons } from '../../scripts/aem.js';
+import { createOptimizedPicture, decorateButtons, fetchPlaceholders } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 function updateActiveSlide(slide) {
@@ -91,12 +91,24 @@ function createSlide(row, slideIndex, carouselId) {
 } 
 
 let carouselId = 0;
-export default function decorate(block) {
+export default async function decorate(block) {
   carouselId += 1;
   block.setAttribute('id', `carousel-${carouselId}`);
 
-  /* change to ul, li */
-  const ul = document.createElement('ul');
+  const rows = block.children;
+  const isSingleSlide = rows.length < 2;
+  const placeholders = await fetchPlaceholders();
+
+  block.setAttribute('role', 'region');
+  block.setAttribute('aria-roledescription', placeholders.carousel || 'Carousel');
+
+  const container = document.createElement('div');
+  container.classList.add('carousel-slides-container');
+
+  const slidesWrapper = document.createElement('ul');
+  slidesWrapper.classList.add('carousel-slides');
+  // block.prepend(slidesWrapper);
+
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     moveInstrumentation(row, li);
@@ -105,17 +117,17 @@ export default function decorate(block) {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
       else div.className = 'cards-card-body';
     });
-    ul.append(li);
+    slidesWrapper.append(li);
   });
-  ul.querySelectorAll('img').forEach((img) => {
+  slidesWrapper.querySelectorAll('img').forEach((img) => {
     const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
     moveInstrumentation(img, optimizedPic.querySelector('img'));
     img.closest('picture').replaceWith(optimizedPic);
   });
-  ul.querySelectorAll('a').forEach((a) => {
+  slidesWrapper.querySelectorAll('a').forEach((a) => {
     a.className = 'button secondary';
     decorateButtons(a);
   });
   block.textContent = '';
-  block.append(ul);
+  block.append(slidesWrapper);
 }
