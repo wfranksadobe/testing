@@ -107,7 +107,7 @@ export default async function decorate(block) {
 
   const slidesWrapper = document.createElement('ul');
   slidesWrapper.classList.add('carousel-slides');
-  // block.prepend(slidesWrapper);
+  block.prepend(slidesWrapper);
 
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
@@ -129,5 +129,5 @@ export default async function decorate(block) {
     decorateButtons(a);
   });
   block.textContent = '';
-  block.append(slidesWrapper);
+  // block.append(slidesWrapper);
 }
