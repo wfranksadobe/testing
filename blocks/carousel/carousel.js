@@ -110,7 +110,7 @@ export default async function decorate(block) {
   block.prepend(slidesWrapper);
 
   let slideIndicators;
-  if (!isSingleSlide) {
+  /* if (!isSingleSlide) {
     const slideIndicatorsNav = document.createElement('nav');
     slideIndicatorsNav.setAttribute('aria-label', placeholders.carouselSlideControls || 'Carousel Slide Controls');
     slideIndicators = document.createElement('ol');
@@ -126,7 +126,7 @@ export default async function decorate(block) {
     `;
 
     container.append(slideNavButtons);
-  }
+  } */
 
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
