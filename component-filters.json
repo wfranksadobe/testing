@@ -30,11 +30,18 @@
       "author",
       "blog",
       "forex",
+      "carousel",
       "dynamic-media"
     ]
   },
   {
     "id": "cards",
+    "components": [
+      "card"
+    ]
+  },
+  {
+    "id": "carousel",
     "components": [
       "card"
     ]
