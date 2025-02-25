@@ -21,11 +21,18 @@
       "featurearticles",
       "map",
       "offer",
-      "forex"
+      "forex",
+      "carousel"
     ]
   },
   {
     "id": "cards",
+    "components": [
+      "card"
+    ]
+  },
+  {
+    "id": "carousel",
     "components": [
       "card"
     ]
