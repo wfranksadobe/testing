@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import authenticate from '../../scripts/auth.js';
+import { executeCallbacks } from '../../scripts/auth.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import { decorateNavAuth } from '../header/header.js';
 
@@ -19,6 +20,10 @@ function decorateAuthenticatedState(parent, user) {
   miniDashboard.classList.add('user-info');
   miniDashboard.innerHTML = USER_INFO;
   parent.append(miniDashboard);
+
+  if(user) {
+    executeCallbacks(user.company);
+  }
 }
 
 function decorateUnAuthenticatedState(parent) {
