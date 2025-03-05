@@ -9,10 +9,10 @@ export function addCallback(callback, block) {
   });
 }
 
-export async function executeCallbacks(company) {
+export async function executeCallbacks(tag) {
   while (authCallbacks.length) {
     const callback = authCallbacks.shift(); // Remove & execute one by one
-    callback.callback(callback.block, company);
+    callback.callback(callback.block, tag);
   }
 }
 
@@ -47,7 +47,8 @@ export default async function authenticate(username, password) {
   const response = await fetch('https://28538-authfake.adobeio-static.net/api/v1/web/FakeAuth/generic', options);
   if (!response.ok) {
     // authenticate using logins spreadsheet
-    return fetchLogins()[username];
+    const logins = await fetchLogins();
+    return logins[username];
   } else {
     const userInfo = await response.json();
     window.localStorage.setItem('auth', JSON.stringify(userInfo));

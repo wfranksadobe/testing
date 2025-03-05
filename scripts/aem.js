@@ -503,9 +503,9 @@ async function fetchLogins(prefix = 'default') {
         .then((json) => {
           const logins = {};
           json.data
-            .filter((logins) => logins.Key)
+            .filter((login) => login.email)
             .forEach((login) => {
-              logins[toCamelCase(login.Key)] = login;
+              logins[login.email] = login;
             });
           window.logins[prefix] = logins;
           resolve(window.logins[prefix]);

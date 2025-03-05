@@ -20,10 +20,6 @@ function decorateAuthenticatedState(parent, user) {
   miniDashboard.classList.add('user-info');
   miniDashboard.innerHTML = USER_INFO;
   parent.append(miniDashboard);
-
-  if(user) {
-    executeCallbacks(user.company);
-  }
 }
 
 function decorateUnAuthenticatedState(parent) {
@@ -81,6 +77,8 @@ function decorateUnAuthenticatedState(parent) {
         document.getElementById('log-in').remove();
         decorateAuthenticatedState(parent, user);
         decorateNavAuth();
+
+        executeCallbacks(user.tag);
       }
     });
     // handle submit
