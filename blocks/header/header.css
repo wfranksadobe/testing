@@ -150,13 +150,10 @@ header .nav-brand {
   font-weight: 700;
   line-height: 1;
   text-align: center;
-
-  /* Custom */
-  flex-basis: 200px;
 }
 
 header nav .nav-brand img {
-  width: 300px;
+  width: 128px;
   height: auto;
 }
 
@@ -304,43 +301,4 @@ header nav .nav-auth button {
     color: var(--text-color);
     background-color: rgb(243 246 242);
   }
-}
-
-header .nav-brand {
-  max-height: 100%;
-  width: auto;
-
-  @media (width < 901px) {
-    height: 100vh;
-  }
-}
-
-header .nav-brand .default-content-wrapper {
-  max-height: 100%;
-  width: auto;
-
-  /* Custom */
-  @media (width < 901px) {
-    height: 100vh;
-    padding: 30px;
-  }
-}
-
-header .nav-brand .default-content-wrapper picture {
-  max-height: 100%;
-  width: auto;
-  display: block;
-
-  @media (width < 901px) {
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-  }
-}
-
-header .nav-brand .default-content-wrapper picture img {
-  max-height: 100%;
-  width: auto;
-  display: block;
-  max-width: 100%;
 }

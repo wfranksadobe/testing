@@ -1,6 +1,6 @@
 footer {
   padding: 2rem;
-  background-color: #f2f7fa;
+  background-color: #fff;
   font-size: var(--body-font-size-s);
   line-height: 40px;
 }
@@ -8,11 +8,6 @@ footer {
 footer .footer {
   max-width: 600px;
   margin: auto;
-}
-
-footer .footer .columns img {
-  width: 100%;
-  height: auto;
 }
 
 @media (width >= 900px) {
@@ -67,10 +62,5 @@ footer .footer p:nth-child(5) {
 
 footer .icon {
   width: 128px;
-  height: auto;
-}
-
-footer .columns {
-  width: 100%;
   height: auto;
 }

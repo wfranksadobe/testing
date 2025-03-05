@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-expressions */
 import authenticate from '../../scripts/auth.js';
-import { executeCallbacks } from '../../scripts/auth.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import { decorateNavAuth } from '../header/header.js';
 
@@ -8,10 +7,11 @@ function decorateAuthenticatedState(parent, user) {
   const USER_INFO = `<div class="dashboard-mini">
       <span class="dashboard-mini-welcome">Welcome back ${user.firstName}!</span>
       <div class="dashboard-mini-account-balance">
-        <p class="dashboard-mini-account-balance-value">The Intranet Hub is your gateway to collaboration, insights, and success</p>
+        <span class="dashboard-mini-account-balance-heading">Account Balance</span>
+        <p class="dashboard-mini-account-balance-value">$1,920.00</p>
       </div>
       <div class=dashboard-mini-quick-actions>
-        <span><a href="https://securbank-react.vercel.app/" target="_blank">View your benefits information</a></span>
+        <span><a href="https://securbank-react.vercel.app/" target="_blank">View account information</a></span>
       </div>
     </div>
   `;
@@ -19,7 +19,6 @@ function decorateAuthenticatedState(parent, user) {
   miniDashboard.classList.add('user-info');
   miniDashboard.innerHTML = USER_INFO;
   parent.append(miniDashboard);
-  executeCallbacks(user.company);
 }
 
 function decorateUnAuthenticatedState(parent) {
@@ -66,18 +65,18 @@ function decorateUnAuthenticatedState(parent) {
 
     authenticate(username, password).then((user) => {
       // console.log(user);
-      /* if (user === null) {
+      if (user === null) {
         const errorMessage = document.getElementsByClassName('error-message')[0];
         errorMessage.style.display = 'block';
         errorMessage.textContent = 'Authentication failed.';
-      } else { */
+      } else {
         const errorMessage = document.getElementsByClassName('error-message')[0];
         errorMessage.style.display = 'none';
         errorMessage.textContent = '';
         document.getElementById('log-in').remove();
         decorateAuthenticatedState(parent, user);
         decorateNavAuth();
-      //}
+      }
     });
     // handle submit
   });
@@ -93,40 +92,9 @@ export default async function decorate(block) {
   if (bgP) bgP.remove();
   row = block.firstElementChild;
   row.classList.add('hero-body');
-
-  const links = block.querySelectorAll('a');
-  const dmurlEl = Array.from(links).find(link => link.href.includes("smartimaging.scene7.com"));
-  let dmUrl;
-  if(dmurlEl) {
-    dmUrl = dmurlEl.innerHTML;
-    dmurlEl.remove();
-  }
-
   const content = document.getElementsByClassName('hero-body')[0].children[0].children[0].children[0];
   moveInstrumentation(row, content);
   if (block.classList.contains('authbox')) {
     window.localStorage.getItem('auth') === null ? decorateUnAuthenticatedState(row) : decorateAuthenticatedState(row, JSON.parse(window.localStorage.getItem('auth')));
   }
-
-  // Get image
-  let imageEl = bg.getElementsByTagName("img")[0];
-  if(!imageEl) {
-    console.error("Image element not found, ensure it is defined in the dialog");
-    return;
-  }
-
-  let imageSrc = imageEl.getAttribute("src");
-  if(!imageSrc) {
-    console.error("Image element source not found, ensure it is defined in the dialog");
-    return;
-  }
-
-  // Get imageName from imageSrc expected in the format /content/dam/<...>/<imageName>.<extension>
-  let imageName = imageSrc.split("/").pop().split(".")[0];
-
-  imageEl.setAttribute("data-src", dmUrl + (dmUrl.endsWith('/') ? "" : "/") + imageName);
-  imageEl.setAttribute("src", "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
-  imageEl.setAttribute("data-mode", "smartcrop");
-
-  s7responsiveImage(imageEl);
 }
