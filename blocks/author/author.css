@@ -1,8 +1,0 @@
-main .author {
-  
-}
-
-main .author .author-name .name {
-  text-transform: uppercase;
-  text-decoration: underline;
-}
