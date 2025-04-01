@@ -485,6 +485,40 @@ async function fetchPlaceholders(prefix = 'default') {
 }
 
 /**
+ * Gets default user logins.
+ * @param {string} [prefix] Location of logins
+ * @returns {object} Window logins object
+ */
+async function fetchLogins(prefix = 'default') {
+  window.logins = window.logins || {};
+  if (!window.logins[prefix]) {
+    window.logins[prefix] = new Promise((resolve) => {
+      fetch(`${prefix === 'default' ? '' : prefix}/logins.json`)
+        .then((resp) => {
+          if (resp.ok) {
+            return resp.json();
+          }
+          return {};
+        })
+        .then((json) => {
+          const logins = {};
+          json.data
+            .filter((login) => login.email)
+            .forEach((login) => {
+              logins[login.email] = login;
+            });
+          resolve(logins);
+        })
+        .catch(() => {
+          // error loading logins
+          resolve({});
+        });
+    });
+  }
+  return window.logins[`${prefix}`];
+}
+
+/**
  * Builds a block DOM Element from a two dimensional array, string, or object
  * @param {string} blockName name of the block
  * @param {*} content two dimensional array or string or object of content
@@ -874,6 +908,7 @@ export {
   decorateSections,
   decorateTemplateAndTheme,
   fetchPlaceholders,
+  fetchLogins,
   getMetadata,
   loadBlock,
   loadCSS,
