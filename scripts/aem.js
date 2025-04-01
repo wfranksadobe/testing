@@ -507,13 +507,11 @@ async function fetchLogins(prefix = 'default') {
             .forEach((login) => {
               logins[login.email] = login;
             });
-          window.logins[prefix] = logins;
-          resolve(window.logins[prefix]);
+          resolve(logins);
         })
         .catch(() => {
           // error loading logins
-          window.logins[prefix] = {};
-          resolve(window.logins[prefix]);
+          resolve({});
         });
     });
   }
